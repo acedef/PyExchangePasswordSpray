@@ -210,8 +210,10 @@ def init(args):
             print(colored('Invalid domain name or auth URL', 'red'))
             ARG_PARSER.print_help()
             sys.exit(0)
-
-        output_path = args['output'].strip()
+            
+        output_path = None
+        if args['output']:
+            output_path = args['output'].strip()
         if output_path is not None:
             CH = logging.FileHandler(output_path)
             CH.setFormatter(logging.Formatter('%(message)s'))
